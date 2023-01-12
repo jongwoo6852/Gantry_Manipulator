@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+<robot name="gantrysystem" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find gantrysystem_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find gantrysystem_description)/urdf/gantrysystem.trans" />
+<xacro:include filename="$(find gantrysystem_description)/urdf/gantrysystem.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="-1.5610126300015453e-16 0.09398108126787207 -0.6182394904022698" rpy="0 0 0"/>
+    <mass value="3746.7382750000006"/>
+    <inertia ixx="1051.074959" iyy="957.148094" izz="1099.938471" ixy="-0.0" iyz="-148.10353" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://gantrysystem_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://gantrysystem_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_1_1">
+  <inertial>
+    <origin xyz="-1.09649012824359e-17 -0.02516751862657656 -2.842170943040401e-16" rpy="0 0 0"/>
+    <mass value="13.022522"/>
+    <inertia ixx="0.086021" iyy="0.133021" izz="0.050351" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.075 0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://gantrysystem_description/meshes/link_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.075 0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://gantrysystem_description/meshes/link_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link_2_1">
+  <inertial>
+    <origin xyz="-1.7176481619885324e-17 -0.026033994334277534 -2.1316282072803005e-16" rpy="0 0 0"/>
+    <mass value="16.626300000000004"/>
+    <inertia ixx="0.127081" iyy="0.170937" izz="0.048624" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0 -0.045 0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://gantrysystem_description/meshes/link_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0 -0.045 0.0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://gantrysystem_description/meshes/link_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="joint_1" type="continuous">
+  <origin xyz="0.0 0.075 0.0" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="link_1_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="joint_2" type="continuous">
+  <origin xyz="-0.0 -0.03 0.0" rpy="0 0 0"/>
+  <parent link="link_1_1"/>
+  <child link="link_2_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+</robot>
